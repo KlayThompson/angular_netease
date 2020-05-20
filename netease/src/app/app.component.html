@@ -11,11 +11,11 @@
         </div>
         <div class="right">
           <div class="search">
-            <nz-input-group [nzSuffix]="suffixIconSearch">
-              <input nz-input type="text" placeholder="歌单/歌手/歌曲">
+            <nz-input-group class="input" [nzSuffix]="suffixIconSearch">
+              <input nz-input type="text" placeholder="歌单/歌手/歌曲" />
             </nz-input-group>
             <ng-template #suffixIconSearch>
-              <i nz-icon type="search"></i>
+              <i nz-icon type="search" nzTheme="outline"></i>
             </ng-template>
           </div>
           <div class="member">
@@ -31,8 +31,10 @@
                       <i nz-icon type="mobile" nzTheme="outline"></i>
                       手机登录
                     </li>
-                    <i nz-icon type="user-add" nzTheme="outline"></i>
-                    <li nz-menu-item>注册</li>
+                    <li nz-menu-item>
+                      <i nz-icon type="user-add" nzTheme="outline"></i>
+                      注册
+                    </li>
                   </ul>
                 </li>
               </ul>
@@ -41,5 +43,12 @@
         </div>
       </div>
     </nz-header>
+    <nz-content class="content">
+      <router-outlet></router-outlet>
+    </nz-content>
+    <nz-footer class="footer">
+      Ant Design ©2019 Implement By Angular
+    </nz-footer>
   </nz-layout>
 </div>
+<app-wy-player> </app-wy-player>
