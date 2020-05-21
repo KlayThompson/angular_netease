@@ -9,6 +9,7 @@ import {ShareModule} from '../share/share.module';
 import {registerLocaleData} from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import {NZ_I18N, zh_CN} from 'ng-zorro-antd';
+import {APPStoreModule} from '../store';
 
 registerLocaleData(zh);
 
@@ -21,6 +22,7 @@ registerLocaleData(zh);
     ServicesModule,
     PagesModule,
     ShareModule,
+    APPStoreModule,
     AppRoutingModule,
   ],
   exports: [
@@ -32,7 +34,7 @@ registerLocaleData(zh);
 export class CoreModule {
   constructor(@SkipSelf() @Optional() parentModule: CoreModule) {
     if (parentModule) {
-      new Error('coreModule 只能被AppModule引入');
+      Error('coreModule 只能被AppModule引入');
     }
   }
 }

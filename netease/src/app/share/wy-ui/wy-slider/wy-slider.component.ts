@@ -25,7 +25,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => WySliderComponent)}
+    {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => WySliderComponent), multi: true}
   ]
 })
 export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccessor {
@@ -33,6 +33,8 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
   @Input() wyVertical = false;
   @Input() wyMin = 0;
   @Input() wyMax = 100;
+  @Input() bufferOffset: SliderValue = 0;
+
   @ViewChild('wySlider', {static: true}) private wySlider: ElementRef;
   private dragStart$: Observable<number>;
   private dragMove$: Observable<number>;
