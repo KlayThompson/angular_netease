@@ -2,10 +2,10 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef, forwardRef,
+  ElementRef, EventEmitter, forwardRef,
   Inject,
   Input, OnDestroy,
-  OnInit,
+  OnInit, Output,
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
@@ -34,6 +34,7 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
   @Input() wyMin = 0;
   @Input() wyMax = 100;
   @Input() bufferOffset: SliderValue = 0;
+  @Output() wyOnAfterChange = new EventEmitter<SliderValue>();
 
   @ViewChild('wySlider', {static: true}) private wySlider: ElementRef;
   private dragStart$: Observable<number>;
@@ -143,6 +144,7 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
   private onDragEnd() {
     this.toggleDragMoving(false);
     this.cdr.markForCheck();
+    this.wyOnAfterChange.emit(this.value);
   }
 
   private setValue(value: SliderValue, needCheck = false) {

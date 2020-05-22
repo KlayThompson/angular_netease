@@ -27,7 +27,7 @@ export type Song = {
   albumSize: number,
   url: string,
   ar: Singer[],
-  al: {id: number, name: string, picUr: string},
+  al: {id: number, name: string, picUrl: string},
   dt: number
 };
 
